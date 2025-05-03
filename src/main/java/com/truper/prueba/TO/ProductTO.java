@@ -9,24 +9,24 @@ public class ProductTO implements Serializable {
 
   private String code;
 
-  private String descrption;
+  private String description;
 
   private BigDecimal price;
 
   private Long orderId;
 
   public ProductTO() {}
-  public ProductTO(Long id, String code, String descrption, BigDecimal price, Long orderId) {
+  public ProductTO(Long id, String code, String description, BigDecimal price, Long orderId) {
     this.id = id;
     this.code = code;
-    this.descrption = descrption;
+    this.description = description;
     this.price = price;
     this.orderId = orderId;
   }
   public ProductTO(Long id, String code, String descrption, BigDecimal price) {
     this.id = id;
     this.code = code;
-    this.descrption = descrption;
+    this.description = descrption;
     this.price = price;
   }
 
@@ -46,12 +46,12 @@ public class ProductTO implements Serializable {
     this.code = code;
   }
 
-  public String getDescrption() {
-    return descrption;
+  public String getDescription() {
+    return description;
   }
 
-  public void setDescrption(String descrption) {
-    this.descrption = descrption;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public BigDecimal getPrice() {

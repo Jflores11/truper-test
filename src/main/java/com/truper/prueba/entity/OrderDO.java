@@ -1,6 +1,7 @@
 package com.truper.prueba.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "purchase_order")
 public class OrderDO implements Serializable {
 
   @Id
@@ -17,16 +18,18 @@ public class OrderDO implements Serializable {
   private Long id;
 
   @Temporal(TemporalType.DATE)
+  @Column(name = "order_date")
   private LocalDate date;
 
-  @Column
-  private BigDecimal total = new BigDecimal(0.0);
+  @Column(name = "total_price", scale = 5, precision = 2)
+  @ColumnDefault("0.0")
+  private BigDecimal total;
 
   @OneToOne
   @JoinColumn(name = "store_id", referencedColumnName = "store_id")
   private StoreDO store;
 
-  @OneToMany(mappedBy = "order")
+  @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   private List<ProductDO> productList;
 
   public OrderDO(Long id, LocalDate date, BigDecimal total, StoreDO store, List<ProductDO> productList) {

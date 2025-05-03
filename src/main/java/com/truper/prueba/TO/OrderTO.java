@@ -1,10 +1,13 @@
 package com.truper.prueba.TO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderTO implements Serializable {
 
   private Long id;
@@ -15,6 +18,8 @@ public class OrderTO implements Serializable {
 
   private Long storeId;
 
+  private StoreTO store;
+
   private List<ProductTO> products;
 
   public OrderTO() {}
@@ -23,6 +28,14 @@ public class OrderTO implements Serializable {
     this.date = date;
     this.total = total;
     this.products = products;
+  }
+
+  public OrderTO(Long id, LocalDate date, BigDecimal total, List<ProductTO> products, StoreTO store) {
+    this.id = id;
+    this.date = date;
+    this.total = total;
+    this.products = products;
+    this.store = store;
   }
 
   public Long getId() {
@@ -64,4 +77,13 @@ public class OrderTO implements Serializable {
   public void setStoreId(Long storeId) {
     this.storeId = storeId;
   }
+
+  public StoreTO getStore() {
+    return store;
+  }
+
+  public void setStore(StoreTO store) {
+    this.store = store;
+  }
+
 }

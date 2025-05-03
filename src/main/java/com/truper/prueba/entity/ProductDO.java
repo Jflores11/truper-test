@@ -24,6 +24,8 @@ public class ProductDO implements Serializable {
   @JoinColumn(name = "order_id", referencedColumnName = "order_id")
   private OrderDO order;
 
+  public ProductDO() {}
+
   public ProductDO(Long id, String code, String description, BigDecimal price, OrderDO order) {
     this.id = id;
     this.code = code;
@@ -31,6 +33,7 @@ public class ProductDO implements Serializable {
     this.price = price;
     this.order = order;
   }
+
   public ProductDO(String code, String description, BigDecimal price, OrderDO order) {
     this.code = code;
     this.description = description;

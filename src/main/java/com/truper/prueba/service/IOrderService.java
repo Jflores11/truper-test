@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IOrderService {
 
-  public OrderTO saveOrder(OrderTO orderTO);
+  OrderTO saveOrder(OrderTO orderTO);
 
-  public List<OrderTO> getAllOrders();
+  List<OrderTO> getAllOrders();
 
-  public OrderTO getOrderById(Long id);
+  OrderTO getOrderById(Long id);
 
 }
